@@ -15,12 +15,11 @@ export default function Dashboard(){
     // Función que cierra la sesión
     function handleLogout(){
         fetch("http://localhost:4000/logout", {
-        method: "POST",
-        credentials: "include"
+        method: "POST"
         })
         .then(() => {
-            navigate("/login");
-      });
+            navigate("/login")
+      })
     }
 
 
@@ -30,7 +29,7 @@ export default function Dashboard(){
             { token == "" ? <Navigate to="/login" /> : 
             <>
              <header className="h-[20vh] bg-gray-200 flex items-center justify-between px-6 shadow-md">
-                <h1 className="text-2xl font-bold">Hola, <strong>{user}</strong></h1>
+                <h1 className="text-2xl font-bold">Rabotnik</h1>
                 <div>
                 <span className="mr-4"></span>
                 <button
@@ -55,7 +54,7 @@ export default function Dashboard(){
                     Buscar por tipo
                     </Link>
 
-                    <Link to="interesados" className="text-blue-600 hover:underline">
+                    <Link to="interested" className="text-blue-600 hover:underline">
                     Interesados
                     </Link>
 

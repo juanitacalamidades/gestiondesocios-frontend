@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import Context from "./Context"
+import SearchBar from "./SearchBar"
 
 export default function Members(){
 
-    let {members,setMembers,hasMembers,setHasMembers,token,setToken} = useContext(Context)
-    let [cargando, setCargando] = useState(true);
+    let {members,setMembers,hasMembers,setHasMembers,token,setToken,loading,setLoading} = useContext(Context)
+    let [filtered, setFiltered] = useState([])
+    let [highlight, setHighlight] = useState(null) // guarda la RegExp actual
 
    
     useEffect(() => {
@@ -17,7 +19,7 @@ export default function Members(){
             })
             .then( response => response.json() )
             .then( members => {
-               
+                setFiltered(members)
                 setMembers(members)
                 setHasMembers(true)
             })
@@ -25,24 +27,66 @@ export default function Members(){
                 console.error("error cargando socios")
             })
             .finally(() => {
-                setCargando(false)
+                setLoading(false)
             })
         }else{
-            setCargando(false)
+            setLoading(false)
         }
     },[])
 
-    if(cargando) return <p className="text-gray-600 italic">Cargando...</p>
+    function handleSearch(regex) {
+        setHighlight(regex)
+        
+        if (regex.source === "") {
+            setFiltered(members);
+        } else {
+            setFiltered(members.filter(({ nombreEntidad }) => regex.test(nombreEntidad)));
+        }
+    }
 
+    // Función para resaltar coincidencias
+    function emphasize(text, regex) {
+        if (!regex) return text;
+        return text.replace(regex, match => `<span class="bg-yellow-200">${match}</span>`);
+    }
 
+    if(loading) return <p className="text-gray-600 italic">Cargando...</p>
+
+    const showMsg = highlight?.source !== "" && filtered.length === 0;
 
 
     return <>
+            <SearchBar onSearch={handleSearch} />
+            <ul>
+            {showMsg ? (
+                <p className="text-gray-500 italic">El nombre no coincide</p>
+            ) : (
+                filtered.map(({ _id, nombreEntidad }) => (
+                <li
+                    key={_id}
+                    className="border-b py-2"
+                    dangerouslySetInnerHTML={{ // inyectar html crudo con esta sugerente propiedad de react, ¿por qué no?
+                    __html: emphasize(nombreEntidad, highlight)
+                    }}
+                />
+                ))
+            )}
+            </ul>
             <ul>
                 {
                     members.length == 0 ?
                     <p>No hay socios registrados</p> :
-                    members.map( ({_id,nombreEntidad,tipoSocio}) => { return  <li key={_id}><p>{nombreEntidad}</p><p>{tipoSocio}</p></li>
+                    members.map( ({_id,nombreEntidad,tipoSocio}) => { return <li key={_id}>
+                        <div>
+                            <p>{nombreEntidad}</p>
+                            <p>{tipoSocio}</p>
+                        </div>
+                        <Link
+                            to={`/dashboard/members/${_id}`}
+                            className="px-4 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                            Ver detalle
+                        </Link>
+                    </li>
                     })
                 }
             </ul>

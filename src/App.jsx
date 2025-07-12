@@ -9,6 +9,8 @@ import Dashboard from './Dashboard'
 import Members from "./Members";
 import CreateMember from "./CreateMember"
 import ByType from './ByType'
+import Interested from './Interested'
+import MemberDetail from './MemberDetail'
 
 const router = createBrowserRouter([
     {
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
             {
                 path : "members/new",
                 element : <CreateMember />
+            },
+            {
+                path : "interested",
+                element : <Interested />
+            },
+            {
+                path : "members/:id",
+                element : <MemberDetail />
             }
         ]
     },
@@ -51,13 +61,16 @@ const router = createBrowserRouter([
 
 function App() {
 
-  let [token, setToken] = useState("")
-  let [user, setUser] = useState(null)
-  let [members, setMembers] = useState([])
-  let [hasMembers, setHasMembers] = useState(false) //todavía no hay socios
+    const [token, setToken] = useState("")
+    const [user, setUser] = useState(null)
+    const [member, setMember] = useState(null)
+    const [members, setMembers] = useState([])
+    const [interested, setInterested] = useState([])
+    const [hasMembers, setHasMembers] = useState(false) //todavía no hay socios
+    const [loading, setLoading] = useState(true)
   
 
-  return <Context.Provider value={ {token,setToken,user,setUser,members,setMembers,hasMembers,setHasMembers} }>
+  return <Context.Provider value={ {token,setToken,user,setUser,members,setMembers,hasMembers,setHasMembers,loading,setLoading,interested,setInterested,member,setMember} }>
             <RouterProvider router={router} />
         </Context.Provider>
 }
