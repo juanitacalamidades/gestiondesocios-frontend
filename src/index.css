@@ -1,1 +1,90 @@
 @import "tailwindcss";
+
+.base-light {
+    background-color: #FFFCF0;
+}
+.light{
+    color: #FFFCF0; 
+}
+.dark {
+    color: #1C1B1A;
+}
+.red-100{
+    background-color: #FFCABB;
+}
+.red-400{
+    background-color: #D14D41;
+}
+.red-900{
+    background-color: #3E1715;
+}
+.orange-100{
+    background-color: #FED3AF;
+}
+.orange-400{
+    background-color: #DA702C;
+}
+.orange-900{
+    background-color: #40200D;
+}
+.yellow-100{
+    background-color: #F6E2A0;
+}
+.yellow-400{
+    background-color: #D0A215;
+}
+.yellow-900{
+    background-color: #3A2D04;
+}
+.green-100{
+    background-color: #DDE2B2;
+}
+.green-400{
+    background-color: #879A39;
+}
+.green-900{
+    background-color: #252D09;
+}
+.cyan-100{
+    background-color: #BFE8D9;
+}
+.cyan-400{
+    background-color: #3AA99F;
+}
+.cyan-900{
+    background-color: #122F2C;
+}
+.blue-100{
+    background-color: #C6DDE8;
+}
+.blue-400{
+    background-color: #4385BE;
+}
+.blue-900{
+    background-color: #12253B;
+}
+.border-color{
+    border-color: #100F0F1A; /* 10% de opacidad */
+
+}
+.black-opacity-10{
+    background-color: #100F0F1A; /* 10% de opacidad */
+}
+
+
+
+.bg-hover-custom-green-400:hover{
+    background-color : #879A39
+}
+
+.bg-hover-custom-green-900:hover{
+    background-color : #252D09
+}
+
+.bg-hover-custom-orange-900:hover{
+    background-color : #40200D
+}
+
+.bg-hover-custom-blue-400:hover{
+    background-color : #12253B
+}
