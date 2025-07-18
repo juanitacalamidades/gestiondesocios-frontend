@@ -27,7 +27,7 @@ export default function SearchBar({ onResult }){
                     setLoading(true)
                     setMsg("")
                     
-                    fetch(`http://localhost:4000/members/member?name=${encodeURIComponent(input)}`, {
+                    fetch(`https://gestiondesocios-backend.onrender.com/members/member?name=${encodeURIComponent(input)}`, {
                         headers :{
                             Authorization : `Bearer ${token}`
                         }

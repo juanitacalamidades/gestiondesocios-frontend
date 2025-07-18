@@ -9,7 +9,7 @@ export default function Interested(){
 
 
     useEffect(() => {
-            fetch("http://localhost:4000/interested", {
+            fetch("https://gestiondesocios-backend.onrender.com/interested", {
                 headers : {
                     "Authorization" : `Bearer ${token}`
                 }

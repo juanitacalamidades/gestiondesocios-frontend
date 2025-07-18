@@ -57,7 +57,7 @@ export default function Aside( {isOpen, onClose} ){
                         </svg>
                     </button>
                     <button onClick={() => {
-                        fetch("http://localhost:4000/logout", {
+                        fetch("https://gestiondesocios-backend.onrender.com/logout", {
                                 method: "POST"
                                 })
                                 .then(() => {

@@ -12,7 +12,7 @@ export default function MemberDetail() {
 
 
     useEffect(() => {
-    fetch(`http://localhost:4000/members/member/${id}`, {
+    fetch(`https://gestiondesocios-backend.onrender.com/members/member/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -65,7 +65,7 @@ export default function MemberDetail() {
                 )
             )
 
-            fetch("http://localhost:4000/members/member/edit", {
+            fetch("https://gestiondesocios-backend.onrender.com/members/member/edit", {
                 method: "PATCH",
                 headers: {
                 "Content-Type": "application/json",
