@@ -22,7 +22,7 @@ export default function ByType() {
     useEffect(() => {
         setLoading(true);
 
-        fetch(`http://localhost:4000/members?type=${encodeURIComponent(selectedType)}`, {
+        fetch(`https://gestiondesocios-backend.onrender.com/?type=${encodeURIComponent(selectedType)}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

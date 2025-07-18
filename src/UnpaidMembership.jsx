@@ -12,7 +12,7 @@ export default function ByType() {
   useEffect(() => {
     setLoading(true);
 
-    fetch(`http://localhost:4000/members?unpaid=${selectedUnpaid}`, {
+    fetch(`https://gestiondesocios-backend.onrender.com/members?unpaid=${selectedUnpaid}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

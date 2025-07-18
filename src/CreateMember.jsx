@@ -103,7 +103,7 @@ export default function CreateMember() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("http://localhost:4000/members/new", {
+    fetch("https://gestiondesocios-backend.onrender.com/members/new", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

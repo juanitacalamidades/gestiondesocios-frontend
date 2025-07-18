@@ -1,4 +1,4 @@
-import { Outlet, Navigate, useNavigate } from "react-router-dom"
+import { Outlet, Navigate } from "react-router-dom"
 import { useState, useContext } from "react"
 import Context from "./Context"
 import Header from "./Header"
@@ -9,7 +9,6 @@ import Aside from "./Aside"
 
 export default function Dashboard(){
 
-    let navigate = useNavigate()
     let {token, setToken, user, setUser} = useContext(Context)
     let [menuOpen,setMenuOpen] = useState(false)
 

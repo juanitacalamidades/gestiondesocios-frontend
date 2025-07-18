@@ -12,7 +12,7 @@ export default function Members(){
 
     useEffect(() => {
         if(!hasMembers){
-            fetch("http://localhost:4000/members", {
+            fetch("https://gestiondesocios-backend.onrender.com/members", {
                 headers : {
                     "Authorization" : `Bearer ${token}`
                 }
