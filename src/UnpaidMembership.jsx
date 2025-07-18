@@ -34,22 +34,22 @@ export default function ByType() {
       return  <>
                {loading ? (
                 <p>Cargando...</p>) : (
-                 <section className="flex flex-col gap-6">
-                    <h2 className="text-xl font-bold">Pendientes de pago</h2>
+                 <section className="flex flex-col gap-6 w-[680px] mx-[50px]">
+                    <h2 className="text-3xl font-bold dark">Pendientes de pago</h2>
                     <ul className="space-y-3">
                         {
                             result.length == 0 ?
                             <p>No hay pagos pendientes</p> :
                             result.map( ({_id,nombreEntidad,provincia,tipoSocio,cuota}) => { return <li key={_id} className="p-3 border border-gray-300 rounded shadow-sm flex justify-between items-center"> 
                                 <div>
-                                    <p className="text-lg mb-2">{toUpper(nombreEntidad)}</p>
-                                    <p>{toUpper(provincia)}</p>
-                                    <p>{toUpper(tipoSocio)}</p>
-                                    <p className="text-red-600">
+                                    <p className="text-base dark mb-2">{toUpper(nombreEntidad)}</p>
+                                    <p className="text-sm dark" >{toUpper(provincia)}</p>
+                                    <p className="text-sm dark" >{toUpper(tipoSocio)}</p>
+                                    <p className="text-sm red">
                                     Cuota pagada: {cuota?.pagada ? "Sí" : "No"}
                                     </p>
                                 </div>
-                                <Link to={`/dashboard/members/${_id}`} className="px-4 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition">Ver detalle</Link>
+                                <Link to={`/dashboard/members/${_id}`} className="text-sm red-400 light px-4 py-1 rounded bg-hover-custom-orange-900 transition">Ver detalle</Link>
                             </li>
                             })
                         }

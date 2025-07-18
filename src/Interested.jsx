@@ -35,20 +35,20 @@ export default function Interested(){
 
 
     return  <>
-                <section className="flex flex-col gap-6">
-                    <h2 className="text-xl font-bold">Lista de interesados</h2>
+                <section className="flex flex-col gap-6 w-[680px] ml-[50px]">
+                    <h2 className="text-3xl font-bold dark">Lista de interesados</h2>
                     <ul className="space-y-3">
                         {
                             interested.length == 0 ?
                             <p>No hay socios registrados</p> :
-                            interested.map( ({_id,nombreEntidad,provincia,tipoSocio,status}) => { return <li key={_id} className="p-3 border border-gray-300 rounded shadow-sm flex justify-between items-center"> 
+                            interested.map( ({_id,nombreEntidad,provincia,tipoSocio,status}) => { return <li key={_id} className="p-3 border border-color rounded shadow-sm flex justify-between items-center"> 
                                 <div>
-                                    <p>{toUpper(nombreEntidad)}</p>
-                                    <p>{toUpper(provincia)}</p>
-                                    <p>{tipoSocio}</p>
-                                    <p>{status}</p>
+                                    <p className="dark text-base">{toUpper(nombreEntidad)}</p>
+                                    <p className="dark text-sm">{toUpper(provincia)}</p>
+                                    <p className="dark text-sm">{tipoSocio}</p>
+                                    <p className="dark text-sm">{status}</p>
                                 </div>
-                                <Link to={`/dashboard/members/${_id}`} className="orange-400 text-white px-4 py-1 rounded bg-hover-custom-orange-900">Ver detalle</Link>
+                                <Link to={`/dashboard/members/${_id}`} className="text-sm red-400 text-white px-4 py-1 rounded bg-hover-custom-blue-900 transition">Ver detalle</Link>
                             </li>
                             })
                         }

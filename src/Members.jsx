@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import Context from "./Context"
-import SearchByName from "./SearchByName"
+import SearchBar from "./SearchBar"
 
 export default function Members(){
 
@@ -41,24 +41,24 @@ export default function Members(){
     if(loading) return <p className="text-gray-600 italic">Cargando...</p>
 
     return <>
-            <section className="flex flex-col">
-                <div className="flex justify-between pt-4 text-lg">
-                    <h2 className="text-xl font-bold">Todos los socios</h2>
-                    <p>{members.length}</p>
+            <section className="flex flex-col w-[680px] mx-[50px]">
+                <SearchBar onResult={setSearchResult} />
+                <div className="flex justify-between items-center pb-6 text-lg">
+                    <h2 className="text-3xl font-bold dark">Todos los socios</h2>
+                    <p className="text-xs">{members.length}</p>
                 </div>
-                <SearchByName onResult={setSearchResult} />
                 <ul>
                     {
                         members.length == 0 ?
                         <p>No hay socios registrados</p> :
-                       (searchResult.length > 0 ? searchResult : members).map( ({_id,nombreEntidad,provincia,tipoSocio,cuota}) => { return  <li key={_id}  className="flex items-center justify-between border-b border-color rounded-[2px] mb-4 w-full">
+                       (searchResult.length > 0 ? searchResult : members).map( ({_id,nombreEntidad,provincia,tipoSocio,cuota}) => { return  <li key={_id}  className="p-3 flex items-center justify-between border border-color rounded-[4px] mb-4 w-full bg-[#D3CAE6]">
                             <div>
-                                <p>{toUpper(nombreEntidad)}</p>
-                                <p>{toUpper(provincia)}</p>
-                                <p>{tipoSocio}</p>
-                                <p>{cuota.pagada}</p>
+                                <p className="text-sm dark">{toUpper(nombreEntidad)}</p>
+                                <p className="text-sm dark">{toUpper(provincia)}</p>
+                                <p className="text-sm dark">{tipoSocio}</p>
+                                <p className="text-sm dark">{cuota.pagada}</p>
                             </div>
-                            <Link to={`/dashboard/members/${_id}`} className="orange-400 text-white px-4 py-1 rounded bg-hover-custom-orange-900">
+                            <Link to={`/dashboard/members/${_id}`} className="red-400 text-sm light px-4 py-1 rounded bg-hover-custom-blue-400">
                             Ver detalle</Link>
                         </li>
                         })

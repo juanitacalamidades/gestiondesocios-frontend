@@ -81,13 +81,17 @@ export default function MemberDetail() {
                 .catch(err => console.error("Error al guardar:", err))
         }
 
+        function toUpper(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
 
   return <>
         <div className="p-4 p-4">
-        <ul className="flex flex-wrap gap-4">
+        <ul className="flex flex-col flex-wrap gap-4 md:h-[150vh] lg:h-[100vh]">
           {/* BLOQUE INFORMACIÓN GENERAL */}
              {/* BLOQUE GENERAL */}
-            <li className="oro-data flex flex-col grow relative border border-black rounded-[2px] p-4 w-full md:w-[48%] lg:w-[30%] bg-white shadow-sm">
+            <li className="oro-data flex flex-col justify-between grow relative border border-black rounded-[6px] p-4 w-full md:w-[48%] lg:w-[30%] bg-[#FAEEC6] border border-color">
            
             <ul className="flex flex-col">
                 {editMode.general ? (
@@ -100,9 +104,12 @@ export default function MemberDetail() {
                         <option value="otro">Otro</option>
                     </select>
                     <div className="my-1">
-                        <label className="mr-2"><input type="radio" name="status" value="activo" checked={formData.status === "activo"} onChange={e => handlePrimitiveChange("status", e.target.value)} />activo</label>
-                        <label className="mr-2"><input type="radio" name="status" value="ex-socio" checked={formData.status === "ex-socio"} onChange={e => handlePrimitiveChange("status", e.target.value)} />ex-socio</label>
-                        <label><input type="radio" name="status" value="interesado" checked={formData.status === "pendiente"} onChange={e => handlePrimitiveChange("status", e.target.value)} />interesado</label>
+                        <label className="mr-2">
+                            <input type="radio" name="status" value="activo" checked={formData.status === "activo"} onChange={e => handlePrimitiveChange("status", e.target.value)} />activo</label>
+                        <label className="mr-2">
+                            <input type="radio" name="status" value="ex-socio" checked={formData.status === "ex-socio"} onChange={e => handlePrimitiveChange("status", e.target.value)} />ex-socio</label>
+                        <label>
+                            <input type="radio" name="status" value="interesado" checked={formData.status === "pendiente"} onChange={e => handlePrimitiveChange("status", e.target.value)} />interesado</label>
                     </div>
                     <input type="number" min="0" className="border p-1 my-1" value={formData.antiguedad || ''} onChange={e => handlePrimitiveChange("antiguedad", e.target.value)} placeholder="Antigüedad (años)" />
                     <input className="border p-1 my-1" value={formData.provincia || ''} onChange={e => handlePrimitiveChange("provincia", e.target.value)} placeholder="Provincia" />
@@ -112,19 +119,19 @@ export default function MemberDetail() {
                 </>
                 ) : (
                 <>
-                    <li><h2 className="text-xl font-bold mb-4">{member.nombreEntidad}</h2></li>
-                    <li><strong>Tipo:</strong> {member.tipoSocio}</li>
-                    <li><strong>Status:</strong> {member.status}</li>
-                    <li><strong>Antigüedad:</strong> {member.antiguedad} años</li>
-                    <li><strong>Provincia:</strong> {member.provincia}</li>
-                    <li><strong>Clave:</strong> {member.clave}</li>
-                    <li><strong>Género:</strong> {member.genero}</li>
-                    <li><strong>Razón social:</strong> {member.razonSocial}</li>
+                    <li><h2 className="text-xl dark font-bold mb-4">{toUpper(member.nombreEntidad)}</h2></li>
+                    <li><p className="dark font-bold inline">Tipo:</p> <p className="inline">{member.tipoSocio}</p></li>
+                    <li><p className="dark font-bold inline">Status:</p> <p className="inline">{member.status}</p></li>
+                    <li><p className="dark font-bold inline">Antigüedad:</p> <p className="inline">{member.antiguedad} años</p></li>
+                    <li><p className="dark font-bold inline">Provincia:</p> <p className="inline">{member.provincia}</p></li>
+                    <li><p className="dark font-bold inline">Clave:</p> <p className="inline">{member.clave}</p></li>
+                    <li><p className="dark font-bold inline">Género:</p> {member.genero}</li>
+                    <li><p className="dark font-bold inline">Razón social:</p> <p className="inline">{member.razonSocial}</p></li>
                 </>
                 )}
             </ul>
              {editMode.general ? (
-                <button onClick={() => saveChanges("general", false)} className="orange-400 text-white px-4 py-1 rounded bg-hover-custom-orange-900 mt-5">
+                <button onClick={() => saveChanges("general", false)} className="red-400 text-white px-4 py-1 rounded bg-hover-custom-green-900 mt-5">
                 Guardar
                 </button>
             ) : (
@@ -135,8 +142,8 @@ export default function MemberDetail() {
             </li>
 
              {/* BLOQUE CONTACTO */}
-            <li className="oro-data flex flex-col relative border border-black rounded-[2px] p-4 w-full md:w-[48%] lg:w-[30%] bg-white shadow-sm">
-            <strong>Contacto:</strong>
+            <li className="oro-data flex flex-col justify-between relative border border-black rounded-[6px] p-4 w-full md:w-[48%] lg:w-[30%] bg-[#FAEEC6] border border-color">
+            <h2 className="mb-4 font-bold dark">Contacto:</h2>
             {editMode.contacto ? (
                 <>
                 <input className="border p-1 my-1" value={formData.contacto?.tlfnMovil || ''} onChange={e => handleChange("contacto", "tlfnMovil", e.target.value)} placeholder="Móvil" />
@@ -146,18 +153,20 @@ export default function MemberDetail() {
                 </>
             ) : (
                 <>
-                <p>Móvil: {member.contacto?.tlfnMovil}</p>
-                <p>Fijo: {member.contacto?.fijo}</p>
-                <p>Email 1: {member.contacto?.email1}</p>
-                <p>Email 2: {member.contacto?.email2}</p>
+                <div className="">
+                    <p>Móvil: {member.contacto?.tlfnMovil}</p>
+                    <p>Fijo: {member.contacto?.fijo}</p>
+                    <p>Email 1: {member.contacto?.email1}</p>
+                    <p>Email 2: {member.contacto?.email2}</p>
+                </div>
                 </>
             )}
              {editMode.contacto ? (
-                <button onClick={() => saveChanges("contacto")} className="orange-400 text-white px-4 py-1 rounded bg-hover-custom-orange-900 mt-5">
+                <button onClick={() => saveChanges("contacto")} className="red-400 text-white px-4 py-1 rounded bg-hover-custom-green-900 mt-5">
                Guardar
                 </button>
             ) : (
-                <svg onClick={() => toggleEdit("contacto")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 absolute bottom-4 right-4 cursor-pointer">
+                <svg onClick={() => toggleEdit("contacto")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 self-end cursor-pointer">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                 </svg>
             )}
@@ -165,9 +174,9 @@ export default function MemberDetail() {
 
 
              {/* BLOQUE DIRECCIÓN FISCAL */}
-            <li className="oro-data flex flex-col relative border border-black rounded-[2px] p-4 w-full md:w-[48%] lg:w-[30%] bg-white shadow-sm">
+            <li className="oro-data flex flex-col justify-between relative border border-black rounded-[6px] p-4 w-full md:w-[48%] lg:w-[30%] bg-[#FAEEC6] border border-color">
           
-            <strong>Dirección Fiscal:</strong>
+            <h2 className="font-bold dark">Dirección Fiscal:</h2>
             {editMode.direccionFiscal ? (
                 <>
                 <input className="border p-1 my-1" value={formData.direccionFiscal?.calle || ''} onChange={e => handleChange("direccionFiscal", "calle", e.target.value)} placeholder="Calle" />
@@ -177,25 +186,25 @@ export default function MemberDetail() {
                 </>
             ) : (
                 <ul>
-                <li>Calle: {member.direccionFiscal?.calle}</li>
-                <li>Ciudad: {member.direccionFiscal?.ciudad}</li>
-                <li>Provincia: {member.direccionFiscal?.provincia}</li>
-                <li>Código Postal: {member.direccionFiscal?.codigoPostal}</li>
+                    <li>Calle: {member.direccionFiscal?.calle}</li>
+                    <li>Ciudad: {member.direccionFiscal?.ciudad}</li>
+                    <li>Provincia: {member.direccionFiscal?.provincia}</li>
+                    <li>Código Postal: {member.direccionFiscal?.codigoPostal}</li>
                 </ul>
             )}
               {editMode.direccionFiscal ? (
-                <button onClick={() => saveChanges("direccionFiscal")} className="orange-400 text-white px-4 py-1 rounded bg-hover-custom-orange-900 mt-5">
+                <button onClick={() => saveChanges("direccionFiscal")} className="red-400 text-white px-4 py-1 rounded bg-hover-custom-green-900 mt-5">
               Guardar
                 </button>
             ) : (
-                <svg onClick={() => toggleEdit("direccionFiscal")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 absolute bottom-4 right-4 cursor-pointer">
+                <svg onClick={() => toggleEdit("direccionFiscal")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 self-end cursor-pointer">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                 </svg>
             )}
             </li>
 
             {/* BLOQUE CUOTA */}
-            <li className="oro-data flex flex-col relative border border-black rounded-[2px] p-4 w-full md:w-[48%] lg:w-[30%] bg-white shadow-sm">
+            <li className="oro-data flex flex-col justify-between relative border border-black rounded-[6px] p-4 w-full md:w-[48%] lg:w-[30%] bg-[#FAEEC6] border border-color">
                
                 <strong>Cuota:</strong>
                 {editMode.cuota ? (
@@ -212,18 +221,18 @@ export default function MemberDetail() {
                     </ul>
                 )}
                  {editMode.cuota ? (
-                    <button onClick={() => saveChanges("cuota")} className="orange-400 text-white px-4 py-1 rounded bg-hover-custom-orange-900 mt-5">
+                    <button onClick={() => saveChanges("cuota")} className="red-400 text-white px-4 py-1 rounded bg-hover-custom-green-900 mt-5">
                    Guardar
                     </button>
                 ) : (
-                    <svg onClick={() => toggleEdit("cuota")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 absolute bottom-4 right-4 cursor-pointer">
+                    <svg onClick={() => toggleEdit("cuota")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 self-end cursor-pointer">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                     </svg>
                 )}
                 </li>
 
                 {/* BLOQUE ACTIVO */}
-                <li className="oro-data flex flex-col relative border border-black rounded-[2px] p-4 w-full md:w-[48%] lg:w-[30%] bg-white shadow-sm">
+                <li className="oro-data flex flex-col justify-between relative border border-black rounded-[6px] p-4 w-full md:w-[48%] lg:w-[30%] bg-[#FAEEC6] border border-color">
                
                 <strong>Activo:</strong>
                 {editMode.activo ? (
@@ -232,18 +241,18 @@ export default function MemberDetail() {
                     <span>{member.activo ? "Sí" : "No"}</span>
                 )}
                  {editMode.activo ? (
-                    <button onClick={() => saveChanges("activo", false)} className="orange-400 text-white px-4 py-1 rounded bg-hover-custom-orange-900 mt-5">
+                    <button onClick={() => saveChanges("activo", false)} className="red-400 text-white px-4 py-1 rounded bg-hover-custom-green-900 mt-5">
                     Guardar
                     </button>
                 ) : (
-                    <svg onClick={() => toggleEdit("activo")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 absolute bottom-4 right-4 cursor-pointer">
+                    <svg onClick={() => toggleEdit("activo")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 self-end cursor-pointer">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                     </svg>
                 )}
             </li>
 
              {/* BLOQUE COMISIÓN */}
-            <li className="oro-data flex flex-col grow relative border border-black rounded-[2px] p-4 w-full md:w-[48%] lg:w-[30%] bg-white shadow-sm">
+            <li className="oro-data flex flex-col justify-between grow relative border border-black rounded-[6px] p-4 w-full md:w-[48%] lg:w-[30%] bg-[#FAEEC6] border border-color">
                
                 <strong>Comisión:</strong>
                 {editMode.comision ? (
@@ -260,18 +269,18 @@ export default function MemberDetail() {
                     </ul>
                 )}
                  {editMode.comision ? (
-                    <button onClick={() => saveChanges("comision")} className="orange-400 text-white px-4 py-1 rounded bg-hover-custom-orange-900 mt-5">
+                    <button onClick={() => saveChanges("comision")} className="red-400 text-white px-4 py-1 rounded bg-hover-custom-green-900 mt-5">
                    Guardar
                     </button>
                 ) : (
-                    <svg onClick={() => toggleEdit("comision")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 absolute bottom-4 right-4 cursor-pointer">
+                    <svg onClick={() => toggleEdit("comision")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 self-end cursor-pointer">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                     </svg>
                 )}
             </li>
 
         {/* BLOQUE OTROS */}
-        <li className="oro-data flex flex-col relative border border-black rounded-[2px] p-2 w-full md:w-[48%] lg:w-[30%] bg-white shadow-sm">
+        <li className="oro-data flex flex-col justify-between relative border border-black rounded-[6px] p-2 w-full md:w-[48%] lg:w-[30%] bg-[#FAEEC6] border border-color">
           
             <strong>Otros:</strong>
             {editMode.otros ? (
@@ -301,18 +310,18 @@ export default function MemberDetail() {
                 </ul>
             )}
               {editMode.otros ? (
-                <button onClick={() => saveChanges("otros")} className="orange-400 text-white px-4 py-1 rounded bg-hover-custom-orange-900 mt-5">
+                <button onClick={() => saveChanges("otros")} className="red-400 text-white px-4 py-1 rounded bg-hover-custom-green-900 mt-5">
                 Guardar
                 </button>
             ) : (
-                <svg onClick={() => toggleEdit("otros")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 absolute bottom-4 right-4 cursor-pointer">
+                <svg onClick={() => toggleEdit("otros")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 self-end cursor-pointer">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                 </svg>
             )}
             </li>
 
             {/* BLOQUE NOTAS */}
-            <li className="oro-data flex flex-col grow relative border border-black rounded-[2px] p-4 w-full md:w-[48%] lg:w-[30%] bg-white shadow-sm">
+            <li className="oro-data flex flex-col justify-between relative rounded-[6px] p-4 w-full md:w-[48%] lg:w-[30%] bg-[#FAEEC6] border border-color">
                
                 <strong>Notas:</strong>
                 {editMode.notas ? (
@@ -331,18 +340,18 @@ export default function MemberDetail() {
                     ))}
                     </>
                 ) : (
-                    <ul>
+                    <ul className="oro-data flex flex-col grow">
                     {member.notas?.map((n, index) => (
-                        <li key={index}>{n.nota}</li>
+                        <li className="w-full md:w-[48%]" key={index}>{n.nota}</li>
                     ))}
                     </ul>
                 )}
                  {editMode.notas ? (
-                    <button onClick={() => saveChanges("notas")} className="orange-400 text-white px-4 py-1 rounded bg-hover-custom-orange-900 mt-5">
+                    <button onClick={() => saveChanges("notas")} className="red-400 text-white px-4 py-1 rounded bg-hover-custom-green-900 mt-5">
                     Guardar
                     </button>
                 ) : (
-                    <svg onClick={() => toggleEdit("notas")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 absolute bottom-4 right-4 cursor-pointer">
+                    <svg onClick={() => toggleEdit("notas")} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 self-end cursor-pointer">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                     </svg>
                 )}

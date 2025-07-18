@@ -121,15 +121,15 @@ export default function CreateMember() {
   }
 
   return <>
-        <form onSubmit={handleSubmit} className="p-4 space-y-4 flex flex-col">
-            <h2 className="text-xl font-bold">Crear nuevo socio</h2>
+        <form onSubmit={handleSubmit} className="p-4 space-y-4 flex flex-col w-[680px] mx-[50px]">
+            <h2 className="text-3xl dark font-bold pb-2 pt-6">Crear nuevo socio</h2>
 
-            <input name="nombreEntidad" placeholder="Nombre de la entidad" value={form.nombreEntidad} onChange={handleChange} className="border p-2 rounded-sm w-full" required />
+            <input name="nombreEntidad" placeholder="Nombre de la entidad" value={form.nombreEntidad} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" required />
 
             <fieldset className="mb-4">
-                <legend className="text-lg font-medium mb-2">Tipo de socio</legend>
+                <legend className="text-lg dark font-bold pb-2 pt-6 mb-2">Tipo de socio</legend>
                 {["Compañía", "Distribuidora", "Festival", "Otro"].map(tipo => (
-                    <label key={tipo} className="block">
+                    <label key={tipo} className="block text-sm">
                     <input
                         type="radio"
                         name="tipoSocio"
@@ -142,82 +142,82 @@ export default function CreateMember() {
                     </label>
                 ))}
             </fieldset>
-            <select name="status" value={form.status} onChange={handleChange} className="border p-2 rounded-sm w-full">
+            <select name="status" value={form.status} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm">
                 {["interesado", "ex-socio", "activo"].map(s => (
                 <option key={s} value={s}>{s}</option>
                 ))}
             </select>
 
-            <input name="antiguedad" placeholder="Antigüedad" value={form.antiguedad} onChange={handleChange} className="border p-2 rounded-sm w-full" />
+            <input name="antiguedad" placeholder="Antigüedad" value={form.antiguedad} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
 
-            <input name="provincia" placeholder="Provincia" value={form.provincia} onChange={handleChange} className="border p-2 rounded-sm w-full" required />
+            <input name="provincia" placeholder="Provincia" value={form.provincia} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" required />
 
-            <input name="clave" placeholder="Clave" value={form.clave} onChange={handleChange} className="border p-2 rounded-sm w-full" />
+            <input name="clave" placeholder="Clave" value={form.clave} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
 
-            <input name="genero" placeholder="Género" value={form.genero} onChange={handleChange} className="border p-2 rounded-sm w-full" />
+            <input name="genero" placeholder="Género" value={form.genero} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
 
             {/* Contacto */}
             <fieldset className="flex flex-col gap-4">
-                <legend className="text-lg font-medium mb-2">Contacto</legend>
-                <input name="contacto.tlfnMovil" placeholder="Móvil" value={form.contacto.tlfnMovil} onChange={handleChange} className="border p-2 rounded-sm w-full" />
-                <input name="contacto.fijo" placeholder="Fijo" value={form.contacto.fijo} onChange={handleChange} className="border p-2 rounded-sm w-full" />
-                <input name="contacto.email1" placeholder="Email 1" value={form.contacto.email1} onChange={handleChange} className="border p-2 rounded-sm w-full" />
-                <input name="contacto.email2" placeholder="Email 2" value={form.contacto.email2} onChange={handleChange} className="border p-2 rounded-sm w-full" />
+                <legend className="text-lg dark font-bold pb-2 pt-6 mb-2">Contacto</legend>
+                <input name="contacto.tlfnMovil" placeholder="Móvil" value={form.contacto.tlfnMovil} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
+                <input name="contacto.fijo" placeholder="Fijo" value={form.contacto.fijo} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
+                <input name="contacto.email1" placeholder="Email 1" value={form.contacto.email1} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
+                <input name="contacto.email2" placeholder="Email 2" value={form.contacto.email2} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
             </fieldset>
 
-            <input name="razonSocial" placeholder="Razón Social" value={form.razonSocial} onChange={handleChange} className="border p-2 rounded-sm w-full" />
+            <input name="razonSocial" placeholder="Razón Social" value={form.razonSocial} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
 
             {/* Dirección fiscal */}
             <fieldset className="flex flex-col gap-4">
-                <legend className="text-lg font-medium mb-2">Dirección Fiscal</legend>
-                <input name="direccionFiscal.calle" placeholder="Calle" value={form.direccionFiscal.calle} onChange={handleChange} className="border p-2 rounded-sm w-full" />
-                <input name="direccionFiscal.ciudad" placeholder="Ciudad" value={form.direccionFiscal.ciudad} onChange={handleChange} className="border p-2 rounded-sm w-full" />
-                <input name="direccionFiscal.provincia" placeholder="Provincia" value={form.direccionFiscal.provincia} onChange={handleChange} className="border p-2 rounded-sm w-full" />
-                <input name="direccionFiscal.codigoPostal" placeholder="Código Postal" value={form.direccionFiscal.codigoPostal} onChange={handleChange} className="border p-2 rounded-sm w-full" />
+                <legend className="text-lg dark font-bold pb-2 pt-6 mb-2">Dirección Fiscal</legend>
+                <input name="direccionFiscal.calle" placeholder="Calle" value={form.direccionFiscal.calle} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
+                <input name="direccionFiscal.ciudad" placeholder="Ciudad" value={form.direccionFiscal.ciudad} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
+                <input name="direccionFiscal.provincia" placeholder="Provincia" value={form.direccionFiscal.provincia} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
+                <input name="direccionFiscal.codigoPostal" placeholder="Código Postal" value={form.direccionFiscal.codigoPostal} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
             </fieldset>
 
             {/* Cuota */}
             <fieldset className="flex flex-col gap-4 border rounded p-2">
-                <legend className="text-lg font-medium font-medium">Cuota</legend>
-                <label>
+                <legend className="text-lg dark font-bold pb-2 pt-6">Cuota</legend>
+                <label className="text-sm">
                   <input type="checkbox" name="cuota.pagada" checked={form.cuota.pagada} onChange={handleChange} /> Pagada
                 </label>
-                <input type="date" name="cuota.fechaDePago" value={form.cuota.fechaDePago} onChange={handleChange} className="border p-2 rounded-sm w-full" />
-                <label>
+                <input type="date" name="cuota.fechaDePago" value={form.cuota.fechaDePago} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
+                <label className="text-sm">
                 <input type="checkbox" name="cuota.recibi" checked={form.cuota.recibi} onChange={handleChange} /> Recibí justificante
                 </label>
             </fieldset>
 
             {/* Estado activo */}
-            <label className="border p-2 rounded-sm">
-                <input  type="checkbox" name="activo" checked={form.activo} onChange={handleChange} /> Socio activo
+            <label className="border p-2 text-lg dark rounded-sm">
+                <input className="mr-3"  type="checkbox" name="activo" checked={form.activo} onChange={handleChange} />Socio activo
             </label>
 
             {/* Comisión */}
             <fieldset className="flex flex-col gap-4">
-                <legend>Comisión</legend>
-                <input name="comision.miembro1" placeholder="Miembro 1" value={form.comision.miembro1} onChange={handleChange} className="border p-2 rounded-sm w-full" />
-                <input name="comision.miembro2" placeholder="Miembro 2" value={form.comision.miembro2} onChange={handleChange} className="border p-2 rounded-sm w-full" />
-                <input name="comision.miembro3" placeholder="Miembro 3" value={form.comision.miembro3} onChange={handleChange} className="border p-2 rounded-sm w-full" />
+                <legend className="text-lg dark font-bold pb-2 pt-6">Comisión</legend>
+                <input name="comision.miembro1" placeholder="Miembro 1" value={form.comision.miembro1} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
+                <input name="comision.miembro2" placeholder="Miembro 2" value={form.comision.miembro2} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
+                <input name="comision.miembro3" placeholder="Miembro 3" value={form.comision.miembro3} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" />
             </fieldset>
 
             {/* Otros */}
             <fieldset className="flex flex-col">
-                  <legend className="text-lg font-medium">Otros</legend>
-                  <label><input type="checkbox" name="otros.catalogo" checked={form.otros.catalogo} onChange={handleChange} /> Catálogo</label>
-                  <label><input type="checkbox" name="otros.directorio" checked={form.otros.directorio} onChange={handleChange} /> Directorio</label>
-                  <label><input type="checkbox" name="otros.videoFoto" checked={form.otros.videoFoto} onChange={handleChange} /> Video/Foto</label>
+                  <legend className="text-lg dark font-bold pb-2 pt-6">Otros</legend>
+                  <label className="text-sm"><input type="checkbox" name="otros.catalogo" checked={form.otros.catalogo} onChange={handleChange} /> Catálogo</label>
+                  <label className="text-sm"><input type="checkbox" name="otros.directorio" checked={form.otros.directorio} onChange={handleChange} /> Directorio</label>
+                  <label className="text-sm"><input type="checkbox" name="otros.videoFoto" checked={form.otros.videoFoto} onChange={handleChange} /> Video/Foto</label>
             </fieldset>
             <fieldset className="flex flex-col">
-                  <legend className="text-lg font-medium">Asamblea</legend>
-                  <label><input type="checkbox" name="otros.asamblea.primera" checked={form.otros.asamblea.primera} onChange={handleChange} /> Primera</label>
-                  <label><input type="checkbox" name="otros.asamblea.segunda" checked={form.otros.asamblea.segunda} onChange={handleChange} /> Segunda</label>
-                  <label><input type="checkbox" name="otros.asamblea.tercera" checked={form.otros.asamblea.tercera} onChange={handleChange} /> Tercera</label>
+                  <legend className="text-lg dark font-bold pb-2 pt-6">Asamblea</legend>
+                  <label className="text-sm"><input type="checkbox" name="otros.asamblea.primera" checked={form.otros.asamblea.primera} onChange={handleChange} /> Primera</label>
+                  <label className="text-sm"><input type="checkbox" name="otros.asamblea.segunda" checked={form.otros.asamblea.segunda} onChange={handleChange} /> Segunda</label>
+                  <label className="text-sm"><input type="checkbox" name="otros.asamblea.tercera" checked={form.otros.asamblea.tercera} onChange={handleChange} /> Tercera</label>
             </fieldset>
 
             {/* Notas */}
             <fieldset>
-                <legend className="text-lg font-medium">Notas</legend>
+                <legend className="text-lg dark font-bold pb-2 pt-6">Notas</legend>
                 {form.notas.map((n, i) => (
                 <input
                     key={i}
@@ -229,7 +229,7 @@ export default function CreateMember() {
                 ))}
             </fieldset>
 
-            <input type="submit" value="Guardar socio" className="bg-green-600 text-white px-4 py-2 rounded w-50 self-end" />
+            <input type="submit" value="Guardar socio" className="red-400 bg-hover-custom-blue-400 text-white px-4 py-2 rounded lg:w-50 w-full self-end" />
         </form>
         </>
 }
