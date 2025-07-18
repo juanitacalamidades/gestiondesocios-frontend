@@ -10,7 +10,7 @@ export default function Login(){
     let [inputPassword, setInputPassword] = useState("")
     let [errorMsg, setErrorMsg] = useState("")
 
-    return <div className="bg-[#DDF1E4] flex items-center justify-center min-h-screen">
+    return <div className="bg-[#E6E4D9] flex items-center justify-center min-h-screen">
             <form
             className="sm:w-[300px] md:w-[400px] flex flex-col max-w-md mx-auto mt-20 p-10 border border-color rounded-md shadow bg-[#261C39]"
             onSubmit={ e => {

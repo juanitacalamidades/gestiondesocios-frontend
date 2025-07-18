@@ -18,7 +18,7 @@ export default function Dashboard(){
     
             { token == "" ? <Navigate to="/login" /> : 
             <>
-             <div className="h-[90vh]">
+             <div className="h-screen flex flex-col">
                 <Header onToggleMenu={() => setMenuOpen(prev => !prev)} />
                     {/* Fondo oscuro al abrir el menú en móviles */}
                     {menuOpen && (
@@ -29,8 +29,8 @@ export default function Dashboard(){
                     )}
             
 
-                    <div className="flex h-full bg-[#E2D9E9]">
-                        <Aside isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+                    <div className="flex flex-1 overflow-hidden bg-[#E2D9E9]">
+                        <Aside isOpen={menuOpen} onClose={() => setMenuOpen(false)} className="h-full overflow-y-auto" />
                         <main className="flex-1 overflow-y-auto pt-9 px-4">
                         <Outlet />
                         </main>
