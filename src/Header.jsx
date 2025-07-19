@@ -1,9 +1,10 @@
-// Header.jsx
+import { Link } from "react-router-dom"
+
 
 export default function Header({ onToggleMenu }) {
   return (
     <header className="flex items-center justify-between border-b px-4 py-3 bg-[#261C39] light md:static relative z-50">
-      <h1 className="sm:text-sm lg:text-lg font-bold">Rabotnik  &gt; Panel de socios</h1>
+      <Link to="members"><h1 className="sm:text-sm lg:text-lg font-bold">Panel de socios</h1></Link>
 
       {/* Botón hamburguesa: solo visible en móviles */}
       <button
