@@ -7,7 +7,7 @@ export default function InfoBlock({
   children
 }) {
   return (
-    <li className={`oro-data grow flex flex-col max-h-max space-y-6 relative border border-black rounded-[6px] p-4 border border-color bg-[#E6E4D9]`}>
+    <li className={`oro-data grow flex flex-col max-h-max space-y-6 relative border border-black rounded-[6px] p-4 border border-color bg-[#D3CAE6]`}>
       {title && <h2 className="mb-4 text-lg font-bold dark">{title}</h2>}
 
       {children}
