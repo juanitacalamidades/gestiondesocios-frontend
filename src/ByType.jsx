@@ -69,7 +69,7 @@ export default function ByType() {
                     { result.length === 0 ? (
                         <p className="red ml-5">No hay socios de tipo {selectedType}</p>
                     ) : (
-                        result.map( ({_id,nombreEntidad,provincia,tipoSocio}) => { return <li key={_id}  className="p-3 flex flex-col sm:items-start lg:items-center justify-between border border-color rounded-[4px] mb-4 w-full bg-[#D3CAE6]">
+                        result.map( ({_id,nombreEntidad,provincia,tipoSocio}) => { return <li key={_id}  className="p-3 flex flex-col sm:items-start justify-between border border-color rounded-[4px] mb-4 w-full bg-[#D3CAE6]">
                           <div>
                                 <p className="text-lg font-bold dark pb-2">{toUpper(nombreEntidad)}</p>
                                <div className="flex">

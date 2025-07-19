@@ -293,38 +293,6 @@ export default function MemberDetail() {
                     )}
                 </InfoBlock>
 
-            {/* BLOQUE NOTAS */}
-           <InfoBlock
-                title="Notas"
-                block="notas"
-                editMode={editMode}
-                toggleEdit={toggleEdit}
-                saveChanges={saveChanges}
-                className="w-full md:w-1/2 lg:w-1/2"
-                >
-                {editMode.notas ? (
-                    <>
-                    {formData.notas?.map((nota, index) => (
-                        <input
-                        key={index}
-                        className="border p-1 my-1 text-sm"
-                        value={nota.nota || ''}
-                        onChange={e => {
-                            const nuevasNotas = [...formData.notas]
-                            nuevasNotas[index].nota = e.target.value
-                            setFormData(prev => ({ ...prev, notas: nuevasNotas }))
-                        }}
-                        />
-                    ))}
-                    </>
-                ) : (
-                    <ul className="flex flex-col gap-1">
-                    {member.notas?.map((n, index) => (
-                        <li key={index}>{n.nota}</li>
-                    ))}
-                    </ul>
-                )}
-            </InfoBlock>
         </ul>
         </div>
   </>

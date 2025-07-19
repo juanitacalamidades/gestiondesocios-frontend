@@ -51,11 +51,11 @@ export default function Members(){
                     {
                         members.length == 0 ?
                         <p>No hay socios registrados</p> :
-                       (searchResult.length > 0 ? searchResult : members).map( ({_id,nombreEntidad,provincia,tipoSocio}) => { return  <li key={_id}  className="p-3 flex flex-col items-start sm:items-center sm:flex-row justify-between border border-color rounded-[4px] mb-4 w-full bg-[#D3CAE6]">
+                       (searchResult.length > 0 ? searchResult : members).map( ({_id,nombreEntidad,provincia,tipoSocio}) => { return  <li key={_id}  className="p-3 flex flex-col sm:items-start justify-between border border-color rounded-[4px] mb-4 w-full bg-[#D3CAE6]">
                             <div>
-                                <p className="text-lg font-medium dark pb-2">{toUpper(nombreEntidad)}</p>
+                                <p className="text-lg font-bold dark pb-2">{toUpper(nombreEntidad)}</p>
                                <div className="flex">
-                                 <div className="flex items-center py-4">
+                                 <div className="flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
                                     </svg>
