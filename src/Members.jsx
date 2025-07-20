@@ -41,7 +41,7 @@ export default function Members(){
     if(loading) return <p className="text-gray-600 italic">Cargando...</p>
 
     return <>
-            <section className="flex flex-col lg:w-[680px] lg:mx-[50px]">
+            <section className="flex flex-col w-full lg:w-[680px] lg:mx-[50px]">
                 <SearchBar onResult={setSearchResult} />
                 <div className="flex justify-between items-center pb-6 text-lg">
                     <h2 className="text-3xl font-bold dark">Todos los socios</h2>

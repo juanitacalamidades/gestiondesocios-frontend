@@ -20,7 +20,6 @@ export default function Dashboard(){
             <>
              <div className="h-screen flex flex-col">
                 <Header onToggleMenu={() => setMenuOpen(prev => !prev)} />
-                    {/* Fondo oscuro al abrir el menú en móviles */}
                     {menuOpen && (
                         <div
                         className="fixed inset-0 z-40 md:hidden"

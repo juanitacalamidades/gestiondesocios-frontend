@@ -10,16 +10,16 @@ export default function Login(){
     let [inputPassword, setInputPassword] = useState("")
     let [errorMsg, setErrorMsg] = useState("")
 
-    return <section>
+    return <section className="min-h-screen">
              <Link to="/" className="flex items-center p-4 dark nav-item-hover-active">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                 </svg>
-                <p className="ml-3">Volver atrás</p>
+                <p className="ml-2 text-xs md:text-sm">Volver atrás</p>
              </Link>
-            <div className="bg-[#E6E4D9] flex items-center justify-center min-h-screen">
+            <div className="bg-[#E6E4D9] flex items-center justify-center">
             <form
-            className="sm:w-[300px] md:w-[400px] flex flex-col max-w-md mx-auto mt-20 p-10 border border-color rounded-md shadow bg-[#3C2A62]"
+            className="sm:w-[320px] md:w-[400px] flex flex-col max-w-md mx-auto mt-20 p-10 border border-color rounded-md shadow bg-[#3C2A62]"
             onSubmit={ e => {
                 e.preventDefault()
                 setErrorMsg(""); // limpiar errores previos
@@ -48,18 +48,18 @@ export default function Login(){
                     }
                 })
                 .catch( error => {
-                    setErrorMsg("No se ha podido estableces conexión con el servidor")
+                    setErrorMsg("Error en el servidor")
                 })
 
 
 
             }}>
-                <label htmlFor="text" className="light mb-2">Nombre de usuario</label>
-                <input type="text" id="text" placeholder="usuario" value={inputUsuario} onChange={e => setInputUsuario(e.target.value)} className="light mb-6 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-                <label htmlFor="password" className="light mb-2">Contraseña</label>
-                <input type="password" id="password" placeholder="contraseña" value={inputPassword} onChange={e => setInputPassword(e.target.value)} className="light mb-2 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                <p className="pb-6 red italic">{ errorMsg }</p>
-                <input type="submit" value="Login" className="cyan-400 bg-hover-custom-red-400 text-white py-2 rounded transition" />
+                <label htmlFor="text" className="text-xs light mb-2">Nombre de usuario</label>
+                <input type="text" id="text" placeholder="usuario" value={inputUsuario} onChange={e => setInputUsuario(e.target.value)} className="light text-xs mb-6 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                <label htmlFor="password" className="light text-xs mb-2">Contraseña</label>
+                <input type="password" id="password" placeholder="contraseña" value={inputPassword} onChange={e => setInputPassword(e.target.value)} className="light text-xs mb-2 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <p className="text-xs pb-6 red italic">{ errorMsg }</p>
+                <input type="submit" value="Login" className="text-xs cyan-400 bg-hover-custom-red-400 text-white py-2 rounded transition" />
             </form>
         </div>
     </section>
