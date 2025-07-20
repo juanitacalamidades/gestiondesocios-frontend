@@ -30,8 +30,8 @@ export default function Header({ onToggleMenu }) {
                   .then(() => {
                       navigate("/login")
               })
-      }} className="gap-2 justify-center items-center bg-[#31234E] light border border-color text-black px-4 mx-6 py-2 rounded hover:bg-[#D14D41] hidden md:flex">Cerrar sesión 
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+      }} className="gap-2 justify-center items-center bg-[#31234E] light border border-color text-black px-4 mx-6 py-2 rounded hover:bg-[#D14D41] hidden md:flex md:text-xs">Cerrar sesión 
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="md:size-4">
           <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
         </svg>
       </button>

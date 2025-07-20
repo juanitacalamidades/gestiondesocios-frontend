@@ -9,9 +9,6 @@ export default function Home(){
             <p className="mt-2 text-sm">
                 Rabotnik es una herramienta digital diseñada para gestionar de forma eficiente la base de datos de socios de la Asociación de Artes de Calle del País Vasco. 
             </p>
-            <p className="mt-2 text-sm">
-                Permite registrar y consultar datos fiscales, de contacto, estado de la cuota anual, participación en asambleas y documentación aportada por los socios. La app facilita el seguimiento actualizado de la comunidad, incluyendo filtros por estado y funcionalidades específicas para gestionar cuotas y nuevos registros.
-            </p>
             </section>
               <nav className="w-full  text-center">
                 <ul>

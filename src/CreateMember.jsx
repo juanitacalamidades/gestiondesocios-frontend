@@ -121,7 +121,7 @@ export default function CreateMember() {
   }
 
   return <>
-        <form onSubmit={handleSubmit} className="p-4 space-y-4 flex flex-col w-[680px] mx-[50px]">
+        <form onSubmit={handleSubmit} className="p-4 space-y-4 flex flex-col lg:w-[680px] lg:mx-[50px]">
             <h2 className="text-3xl dark font-bold pb-2 pt-6">Crear nuevo socio</h2>
 
             <input name="nombreEntidad" placeholder="Nombre de la entidad" value={form.nombreEntidad} onChange={handleChange} className="border p-2 rounded-sm w-full text-sm" required />
